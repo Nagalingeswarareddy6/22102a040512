@@ -1,0 +1,113 @@
+/* src/components/CorrelationHeatmap.css */
+.heatmap-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.heatmap-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.time-interval-selector {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-interval-selector label {
+    font-weight: bold;
+}
+
+.time-interval-dropdown {
+    width: 200px;
+}
+
+.loading, .error-message, .no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 50px;
+}
+
+.error-message {
+    color: red;
+}
+
+.heatmap-grid-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling if many stocks */
+    margin-bottom: 30px;
+}
+
+.heatmap-grid {
+    display: table; /* Use table layout for alignment */
+    border-collapse: collapse;
+    width: fit-content; /* Adjust width based on content */
+    margin: 0 auto;
+}
+
+.heatmap-row-header, .heatmap-row {
+    display: table-row;
+}
+
+.heatmap-cell {
+    display: table-cell;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    min-width: 60px; /* Minimum width for cells */
+    height: 40px; /* Fixed height for cells */
+    box-sizing: border-box;
+    font-size: 0.85rem;
+    position: relative; /* For tooltips */
+}
+
+.header-cell {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.data-cell {
+    transition: background-color 0.3s ease;
+}
+
+.empty-cell {
+    background-color: transparent;
+    border: none;
+}
+
+/* Color Legend */
+.color-legend {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.color-legend h4 {
+    margin-bottom: 15px;
+}
+
+.legend-gradient-positive {
+    height: 30px;
+    width: 80%;
+    margin: 0 auto;
+    background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 0, 0) 50%, rgb(0, 0, 255) 100%);
+    /* This gradient needs adjustment for negative to positive.
+       Let's refine it: Red for -1, White for 0, Blue for +1 */
+    background: linear-gradient(to right,
+        rgb(255, 0, 0),    /* Strong Negative */
+        rgb(255, 150, 150), /* Less Negative */
+        rgb(255, 255, 255), /* Neutral */
+        rgb(150, 150, 255), /* Less Positive */
+        rgb(0, 0, 255)     /* Strong Positive */
+    );
+    border: 1px solid #ccc;
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 5px auto 0;
+    font-size: 0.9rem;
+}
